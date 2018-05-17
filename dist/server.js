@@ -7,22 +7,13 @@ const apollo_server_express_1 = require("apollo-server-express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_1 = __importDefault(require("express"));
 const graphql_tools_1 = require("graphql-tools");
-const books = [
-    {
-        title: "Harry Potter and the Sorcerer's stone",
-        author: 'J.K. Rowling'
-    },
-    {
-        title: 'Jurassic Park',
-        author: 'Michael Crichton'
-    }
-];
+const books_1 = require("./data/books");
 const typeDefs = `
     type Query { books: [Book] }
     type Book { title: String, author: String }
 `;
 const resolvers = {
-    Query: { books: () => books },
+    Query: { books: () => books_1.BOOKS },
 };
 const schema = graphql_tools_1.makeExecutableSchema({
     typeDefs,

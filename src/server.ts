@@ -2,17 +2,7 @@ import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import express from 'express';
 import { makeExecutableSchema } from 'graphql-tools';
-
-const books = [
-    {
-        title: "Harry Potter and the Sorcerer's stone",
-        author: 'J.K. Rowling'
-    },
-    {
-        title: 'Jurassic Park',
-        author: 'Michael Crichton'
-    }
-];
+import { BOOKS } from './data/books';
 
 const typeDefs = `
     type Query { books: [Book] }
@@ -20,7 +10,7 @@ const typeDefs = `
 `;
 
 const resolvers = {
-    Query: { books: () => books },
+    Query: { books: () => BOOKS },
 };
 
 const schema = makeExecutableSchema({
