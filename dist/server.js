@@ -31,6 +31,7 @@ const schema = graphql_tools_1.makeExecutableSchema({
 const app = express_1.default();
 app.use('/graphql', body_parser_1.default.json(), apollo_server_express_1.graphqlExpress({ schema }));
 app.use('/graphiql', apollo_server_express_1.graphiqlExpress({ endpointURL: '/graphql' }));
-app.listen(3000, () => {
-    console.log('Go to http://localhost:3000/graphiql to run quieries!');
+let port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log("Go to http://localhost:%d/graphiql to run quieries!", port);
 });
